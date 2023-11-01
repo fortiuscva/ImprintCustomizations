@@ -292,7 +292,7 @@ report 52104 "IMP Sales Order"
                         column(AmountExclInvDisc; AmountExclInvDisc)
                         {
                         }
-                        column(TempSalesLineNo; TempSalesLine."No.")
+                        column(TempSalesLineNo; ItemNumberToPrint)
                         {
                         }
                         column(TempSalesLineUOM; TempSalesLine."Unit of Measure")
@@ -453,8 +453,14 @@ report 52104 "IMP Sales Order"
                                 else
                                     Next();
 
+                                if "Item Reference No." <> '' then
+                                    ItemNumberToPrint := "Item Reference No."
+                                else
+                                    ItemNumberToPrint := TempSalesLine."No.";
+
                                 if Type = Type::" " then begin
                                     "No." := '';
+                                    ItemNumberToPrint := '';
                                     "Unit of Measure" := '';
                                     "Line Amount" := 0;
                                     "Inv. Discount Amount" := 0;
@@ -789,6 +795,7 @@ report 52104 "IMP Sales Order"
         AmtSubjecttoSalesTaxCptnLbl: Label 'Amount Subject to Sales Tax';
         AmtExemptfromSalesTaxCptnLbl: Label 'Amount Exempt from Sales Tax';
         PrintLogo: Boolean;
+        ItemNumberToPrint: Text[50];
 
     procedure GetUnitOfMeasureDescr(UOMCode: Code[10]): Text[10]
     var
