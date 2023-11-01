@@ -10,7 +10,7 @@ report 52104 "IMP Sales Order"
         {
             DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST(Order));
             PrintOnlyIfDetail = true;
-            RequestFilterFields = "No.", "Sell-to Customer No.", "Bill-to Customer No.", "Ship-to Code", "No. Printed", "Last Release Date";
+            RequestFilterFields = "No.", "Sell-to Customer No.", "Bill-to Customer No.", "Ship-to Code", "No. Printed", "IMP Last Release Date";
             RequestFilterHeading = 'Sales Order';
             column(No_SalesHeader; "No.")
             {

@@ -60,7 +60,7 @@ codeunit 52100 "IMP Event& Subscriptions"
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Release Sales Document", 'OnAfterReleaseSalesDoc', '', false, false)]
     local procedure ReleaseSalesDoc_OnAfterReleaseSalesDoc(var SalesHeader: Record "Sales Header"; PreviewMode: Boolean; var LinesWereModified: Boolean)
     begin
-        SalesHeader."Last Release Date" := Today;
+        SalesHeader."IMP Last Release Date" := Today;
     end;
 
     var

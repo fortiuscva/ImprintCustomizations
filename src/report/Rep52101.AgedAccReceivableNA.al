@@ -15,13 +15,13 @@ report 52101 "IMP Aged Acc. Receivable NA"
             column(FORMAT_TODAY_0_4_; Format(Today(), 0, 4))
             {
             }
-            column(TIME; Time())
+            column("TIME"; Time())
             {
             }
             column(CompanyInformation_Name; CompanyInformation.Name)
             {
             }
-            column(USERID; UserId())
+            column("USERID"; UserId())
             {
             }
             column(PrintDetail; PrintDetail)

@@ -4,7 +4,7 @@ pageextension 52109 "IMP Sales Order" extends "Sales Order"
     {
         addafter(Status)
         {
-            field("Last Release Date"; Rec."Last Release Date")
+            field("IMP Last Release Date"; Rec."IMP Last Release Date")
             {
                 ApplicationArea = All;
                 ToolTip = 'When Sales Order is Released, Last Release Date is updated with Work Date.';

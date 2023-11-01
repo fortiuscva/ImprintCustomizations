@@ -11,7 +11,7 @@ pageextension 52106 "IMP Sales Quote Subform" extends "Sales Quote Subform"
     {
         addlast("F&unctions")
         {
-            action(IMP_ExplodeBOM)
+            action("IMP IMP_ExplodeBOM")
             {
                 ApplicationArea = Suite;
                 Caption = 'IMP E&xplode BOM';

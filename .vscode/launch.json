@@ -1,0 +1,51 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Your own server",
+            "request": "launch",
+            "type": "al",
+            "environmentType": "OnPrem",
+            "server": "http://bcserver",
+            "serverInstance": "BC",
+            "authentication": "UserPassword",
+            "startupObjectId": 22,
+            "startupObjectType": "Page",
+            "breakOnError": "All",
+            "launchBrowser": true,
+            "enableLongRunningSqlStatements": true,
+            "enableSqlInformationDebugger": true,
+            "tenant": "default"
+        },
+        {
+            "name": "Sandbox_April23_BC_Upgrade",
+            "request": "launch",
+            "type": "al",
+            "startupObjectId": 22,
+            "startupObjectType":"Page",
+            "breakOnError": true,
+            "launchBrowser": true,
+            "environmentType":"Sandbox",
+            "environmentName": "Sandbox_April23_BC_Upgrade",
+            "tenant": "2b21e308-8ddb-4d30-8fae-930675954f9d", //TENANT ID            
+            "enableLongRunningSqlStatements": true,
+            "enableSqlInformationDebugger": true,
+            "schemaUpdateMode": "ForceSync"
+        },
+        {
+            "name": "Sandbox-090623",
+            "request": "launch",
+            "type": "al",
+            "startupObjectId": 22,
+            "startupObjectType":"Page",
+            "breakOnError": true,
+            "launchBrowser": true,
+            "environmentType":"Sandbox",
+            "environmentName": "Sandbox-090623",
+            "tenant": "2b21e308-8ddb-4d30-8fae-930675954f9d", //TENANT ID            
+            "enableLongRunningSqlStatements": true,
+            "enableSqlInformationDebugger": true,
+            "schemaUpdateMode": "ForceSync"
+        }
+    ]
+}

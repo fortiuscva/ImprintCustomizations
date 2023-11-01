@@ -8,7 +8,7 @@ pageextension 52108 "IMP Sales Order Subform" extends "Sales Order Subform"
     {
         addafter(ExplodeBOM_Functions)
         {
-            action(IMP_ExplodeBOM)
+            action("IMP IMP_ExplodeBOM")
             {
                 ApplicationArea = Suite;
                 Caption = 'IMP E&xplode BOM';
