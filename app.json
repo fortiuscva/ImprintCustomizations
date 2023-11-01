@@ -1,0 +1,45 @@
+{
+  "id": "aa65b573-afb9-4567-b576-4451aaab91b9",
+  "name": "ImprintCustomizations",
+  "publisher": "SSI",
+  "version": "1.0.0.13",
+  "runtime": "10.0",
+  "target": "Cloud",
+  "application": "21.0.0.0",
+  "platform": "21.0.0.0",
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true,
+    "applyToDevExtension": false
+  },
+  "features": [
+    "NOIMPLICITWITH"
+  ],
+  "dependencies": [
+    {
+      "id": "12468ed0-f760-4839-93ee-69f8b07c19e2",
+      "name": "ImprintUPGAL",
+      "version": "1.0.0.49",
+      "publisher": "Default publisher"
+    },
+    {
+      "id": "069f3d48-1c17-459e-bbc6-3f00693bb507",
+      "name": "Zetadocs - AP automation and bulk emailing",
+      "version": "3.0.23087.18000",
+      "publisher": "Equisys"
+    },
+    {
+      "id": "f8750ab4-1d72-455d-b773-5b487a0ac106",
+      "name": "Lanham E-Ship and E-Receive",
+      "version": "21.1.12.9",
+      "publisher": "Lanham Associate"
+    }
+  ],
+  "idRanges": [
+    {
+      "from": 52100,
+      "to": 52200
+    }
+  ]
+}
