@@ -2,7 +2,7 @@
   "id": "aa65b573-afb9-4567-b576-4451aaab91b9",
   "name": "ImprintCustomizations",
   "publisher": "SSI",
-  "version": "1.0.0.14",
+  "version": "1.0.0.15",
   "runtime": "10.0",
   "target": "Cloud",
   "application": "21.0.0.0",
@@ -14,7 +14,7 @@
     "applyToDevExtension": false
   },
   "features": [
-    "NOIMPLICITWITH"
+    "NoImplicitWith"
   ],
   "dependencies": [
     {
