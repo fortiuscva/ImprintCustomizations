@@ -65,4 +65,18 @@ codeunit 52100 "IMP Event& Subscriptions"
 
     var
         SingleInstanceCUGbl: Codeunit "IMP Single Instance";
+
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnBeforeConfirmBillToContactNoChange', '', false, false)]
+    local procedure Table36_OnBeforeConfirmBillToContactNoChange(var SalesHeader: Record "Sales Header"; var xSalesHeader: Record "Sales Header"; CurrentFieldNo: Integer; var Confirmed: Boolean; var IsHandled: Boolean);
+    begin
+        if CurrentFieldNo = 5052 then begin
+            if (SalesHeader."Sell-to Customer No." = SalesHeader."Bill-to Customer No.") or
+               (SalesHeader."Bill-to Customer No." = '')
+            then begin
+                Confirmed := false;
+                IsHandled := true;
+            end;
+        end;
+    end;
 }
