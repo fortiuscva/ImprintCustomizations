@@ -34,6 +34,12 @@
       "name": "Lanham E-Ship and E-Receive",
       "version": "21.1.12.9",
       "publisher": "Lanham Associate"
+    },
+    {
+      "id": "5fedf952-2450-4bce-b578-f3b7c13cd9a9",
+      "name": "Avalara AvaTax",
+      "version": "23.0.19.0",
+      "publisher": "Avalara"
     }
   ],
   "idRanges": [
