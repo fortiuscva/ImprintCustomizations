@@ -479,7 +479,8 @@ report 52104 "IMP Sales Order"
                                 else
                                     TaxLiable := 0;
 
-                                OnAfterCalculateSalesTax("Sales Header", TempSalesLine, TaxAmount, TaxLiable); // Avalara
+                                //OnAfterCalculateSalesTax("Sales Header", TempSalesLine, TaxAmount, TaxLiable); // Avalara
+                                IMPSalesOrderTaxCalc("Sales Header", TempSalesLine, TaxAmount, TaxLiable);
 
                                 AmountExclInvDisc := "Line Amount";
 
@@ -832,6 +833,32 @@ report 52104 "IMP Sales Order"
         FormatDocument.ParseComment(Comment, TempSalesLine.Description, TempSalesLine."Description 2");
         TempSalesLine.Insert();
     end;
+
+    local procedure IMPSalesOrderTaxCalc(var SalesHeaderParm: Record "Sales Header"; var SalesLineParm: Record "Sales Line"; var TaxAmount: Decimal; var TaxLiable: Decimal);
+    BEGIN
+        SalesHeaderParm.AvaIsValid();
+        IF SalesHeaderParm."Ava AvaTax Transaction" THEN BEGIN
+            TaxAmount := SalesLineParm."Ava Tax Amount";
+            TaxLiable := SalesLineParm."Ava Taxable Amount";
+
+            IF SalesHeaderParm.Status = SalesHeaderParm.Status::Released then
+                IF SalesLineParm.Quantity <> SalesLineParm."Qty. to Invoice" then begin
+                    TaxAmount := (SalesLineParm.Amount * SalesLineParm."Ava Tax Rate" / 100);
+                    TaxLiable := SalesLineParm.Amount;
+                end;
+        END;
+        IF SalesHeaderParm."Ava AFC Transaction" THEN BEGIN
+            SalesLineParm.CalcFields("Ava AFC Tax Details Billable");
+            TaxAmount := SalesLineParm."Ava AFC Tax Details Billable";
+            TaxLiable := SalesLineParm.Amount;
+
+            IF SalesHeaderParm.Status = SalesHeaderParm.Status::Released then
+                IF SalesLineParm.Quantity <> SalesLineParm."Qty. to Invoice" then begin
+                    TaxAmount := (SalesLineParm.Amount * SalesLineParm."Ava Tax Rate" / 100);
+                    TaxLiable := SalesLineParm.Amount;
+                end;
+        END;
+    END;
 
     [IntegrationEvent(false, false)]
     local procedure OnAfterCalculateSalesTax(var SalesHeaderParm: Record "Sales Header"; var SalesLineParm: Record "Sales Line"; var TaxAmount: Decimal; var TaxLiable: Decimal)
