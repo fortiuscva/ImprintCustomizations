@@ -286,6 +286,18 @@ report 52104 "IMP Sales Order"
                     column(TaxIdentTypeCaption; TaxIdentTypeCaptionLbl)
                     {
                     }
+                    column(Shipping_Agent_Caption; Shipping_Agent_CaptionLbl)
+                    { }
+                    column(Shipping_Agent_Code; "Sales Header"."Shipping Agent Code")
+                    { }
+                    column(Agent_Service_Caption; Agent_Service_CaptionLbl)
+                    { }
+                    column(ShipAgentServiceCode; "Sales Header"."LAX E-Ship Agent Service")
+                    { }
+                    column(Third_Party_Acc_NO_Caption; Third_Party_Acc_NO_CaptionLbl)
+                    { }
+                    column(ThirdPartyAccNo; "Sales Header"."LAX Third Party Ship. Acct No.")
+                    { }
                     dataitem(SalesLine; "Integer")
                     {
                         DataItemTableView = SORTING(Number);
@@ -542,7 +554,11 @@ report 52104 "IMP Sales Order"
                         FormatAddress.RespCenter(CompanyAddress, RespCenter);
                         CompanyInformation."Phone No." := RespCenter."Phone No.";
                         CompanyInformation."Fax No." := RespCenter."Fax No.";
-                    end;
+                    end;/*  else begin
+                        CompanyAddress[9] := CompanyInformation."Phone No.";
+                        CompanyAddress[10] := CompanyInformation."Home Page";
+                        CompressArray(CompanyAddress);
+                    end; */
 
                 CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
 
@@ -697,9 +713,12 @@ report 52104 "IMP Sales Order"
         CompanyInformation.Get();
         FormatDocument.SetLogoPosition(SalesSetup."Logo Position on Documents", CompanyInfo1, CompanyInfo2, CompanyInfo3);
 
-        if PrintCompany then
-            FormatAddress.Company(CompanyAddress, CompanyInformation)
-        else
+        if PrintCompany then begin
+            FormatAddress.Company(CompanyAddress, CompanyInformation);
+            CompanyAddress[9] := CompanyInformation."Phone No.";
+            CompanyAddress[10] := CompanyInformation."Home Page";
+            CompressArray(CompanyAddress);
+        end else
             Clear(CompanyAddress);
     end;
 
@@ -730,7 +749,7 @@ report 52104 "IMP Sales Order"
         SegManagement: Codeunit SegManagement;
         ArchiveManagement: Codeunit ArchiveManagement;
         SalesTaxCalc: Codeunit "Sales Tax Calculate";
-        CompanyAddress: array[8] of Text[100];
+        CompanyAddress: array[10] of Text[100];
         BillToAddress: array[8] of Text[100];
         ShipToAddress: array[8] of Text[100];
         CopyTxt: Text;
@@ -776,7 +795,7 @@ report 52104 "IMP Sales Order"
         PONumberCaptionLbl: Label 'P.O. Number';
         SalesPersonCaptionLbl: Label 'SalesPerson';
         ShipCaptionLbl: Label 'Ship';
-        SalesOrderCaptionLbl: Label 'SALES ORDER';
+        SalesOrderCaptionLbl: Label 'ORDER CONFIRMATION';
         SalesOrderNumberCaptionLbl: Label 'Sales Order Number:';
         SalesOrderDateCaptionLbl: Label 'Sales Order Date:';
         PageCaptionLbl: Label 'Page:';
@@ -797,6 +816,9 @@ report 52104 "IMP Sales Order"
         AmtExemptfromSalesTaxCptnLbl: Label 'Amount Exempt from Sales Tax';
         PrintLogo: Boolean;
         ItemNumberToPrint: Text[50];
+        Shipping_Agent_CaptionLbl: Label 'Shipping Agent';
+        Agent_Service_CaptionLbl: Label 'Agent Service';
+        Third_Party_Acc_NO_CaptionLbl: Label 'Third Party Acc. No.';
 
     procedure GetUnitOfMeasureDescr(UOMCode: Code[10]): Text[10]
     var

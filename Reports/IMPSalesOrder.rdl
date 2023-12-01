@@ -121,7 +121,13 @@ Cstr(Fields!ShipDateCaption.Value) + Chr(177) +
 Cstr(Fields!ShipViaCaption.Value) + Chr(177) + 
 Cstr(Fields!SoldCaption.Value) + Chr(177) + 
 Cstr(Fields!SalesOrderCaption.Value) + Chr(177) + 
-Cstr(Fields!TaxIdentTypeCaption.Value)</Value>
+Cstr(Fields!TaxIdentTypeCaption.Value) + Chr(177) +
+Cstr(Fields!Shipping_Agent_Caption.Value) + Chr(177) +
+Cstr(Fields!Shipping_Agent_Code.Value) + Chr(177) +
+Cstr(Fields!Agent_Service_Caption.Value) + Chr(177) +
+Cstr(Fields!ShipAgentServiceCode.Value) + Chr(177) +
+Cstr(Fields!Third_Party_Acc_NO_Caption.Value) + Chr(177) +
+Cstr(Fields!ThirdPartyAccNo.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1644,7 +1650,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=  Code.GetData(69,1)</Value>
+                      <Value>=  Code.GetData(70,1)</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -1668,7 +1674,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=  Code.GetData(70,1)</Value>
+                      <Value>=  Code.GetData(78,1)</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -1762,7 +1768,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Code.GetData(26,1)</Value>
+                      <Value>=Code.GetData(76,1)</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -1786,7 +1792,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Code.GetData(27,1)</Value>
+                      <Value>=Code.GetData(77,1)</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -2235,7 +2241,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Code.GetData(31,1)</Value>
+                      <Value>=Code.GetData(29,1)</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -2260,7 +2266,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Code.GetData(29,1)</Value>
+                      <Value>=Code.GetData(79,1)</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -2679,7 +2685,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=  Code.GetData(73,1)</Value>
+                      <Value>=  Code.GetData(74,1)</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -2703,7 +2709,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Code.GetData(35,1)</Value>
+                      <Value>=Code.GetData(75,1)</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -3734,6 +3740,24 @@ End Function
         </Field>
         <Field Name="TaxIdentTypeCaption">
           <DataField>TaxIdentTypeCaption</DataField>
+        </Field>
+        <Field Name="Shipping_Agent_Caption">
+          <DataField>Shipping_Agent_Caption</DataField>
+        </Field>
+        <Field Name="Shipping_Agent_Code">
+          <DataField>Shipping_Agent_Code</DataField>
+        </Field>
+        <Field Name="Agent_Service_Caption">
+          <DataField>Agent_Service_Caption</DataField>
+        </Field>
+        <Field Name="ShipAgentServiceCode">
+          <DataField>ShipAgentServiceCode</DataField>
+        </Field>
+        <Field Name="Third_Party_Acc_NO_Caption">
+          <DataField>Third_Party_Acc_NO_Caption</DataField>
+        </Field>
+        <Field Name="ThirdPartyAccNo">
+          <DataField>ThirdPartyAccNo</DataField>
         </Field>
         <Field Name="AmountExclInvDisc">
           <DataField>AmountExclInvDisc</DataField>
