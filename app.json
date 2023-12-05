@@ -2,43 +2,32 @@
   "id": "aa65b573-afb9-4567-b576-4451aaab91b9",
   "name": "ImprintCustomizations",
   "publisher": "SSI",
-  "version": "1.0.0.18",
-  "runtime": "10.0",
+  "version": "1.0.0.19",
+  "runtime": "12.0",
   "target": "Cloud",
-  "application": "21.0.0.0",
-  "platform": "21.0.0.0",
-  "resourceExposurePolicy": {
-    "allowDebugging": true,
-    "allowDownloadingSource": true,
-    "includeSourceInSymbolFile": true,
-    "applyToDevExtension": false
-  },
-  "features": [
-    "NoImplicitWith"
-  ],
   "dependencies": [
     {
       "id": "12468ed0-f760-4839-93ee-69f8b07c19e2",
       "name": "ImprintUPGAL",
-      "version": "1.0.0.49",
-      "publisher": "Default publisher"
+      "version": "1.0.0.62",
+      "publisher": "SSI"
     },
     {
       "id": "069f3d48-1c17-459e-bbc6-3f00693bb507",
       "name": "Zetadocs - AP automation and bulk emailing",
-      "version": "3.0.23087.18000",
+      "version": "3.0.23312.20000",
       "publisher": "Equisys"
     },
     {
       "id": "f8750ab4-1d72-455d-b773-5b487a0ac106",
       "name": "Lanham E-Ship and E-Receive",
-      "version": "21.1.12.9",
+      "version": "23.1.14.8",
       "publisher": "Lanham Associate"
     },
     {
       "id": "5fedf952-2450-4bce-b578-f3b7c13cd9a9",
       "name": "Avalara AvaTax",
-      "version": "23.0.19.0",
+      "version": "23.0.19.1",
       "publisher": "Avalara"
     }
   ],
@@ -47,5 +36,16 @@
       "from": 52100,
       "to": 52200
     }
+  ],
+  "application": "23.0.0.0",
+  "platform": "23.0.0.0",
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true,
+    "applyToDevExtension": false
+  },
+  "features": [
+    "NoImplicitWith"
   ]
 }
