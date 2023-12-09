@@ -334,6 +334,37 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="textbox6">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!ItemNoCaption.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>textbox6</rd:DefaultName>
+                          <ZIndex>21</ZIndex>
+                          <Style>
+                            <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>5pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="textbox7">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -362,10 +393,8 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                             <PaddingRight>5pt</PaddingRight>
                           </Style>
                         </Textbox>
-                        <ColSpan>2</ColSpan>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell />
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="textbox43">
@@ -914,6 +943,35 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="textbox47">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!TempSalesLineNo.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <ZIndex>15</ZIndex>
+                          <Style>
+                            <VerticalAlign>Top</VerticalAlign>
+                            <PaddingRight>5pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="textbox54">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -940,10 +998,8 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                             <PaddingRight>5pt</PaddingRight>
                           </Style>
                         </Textbox>
-                        <ColSpan>2</ColSpan>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell />
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="textbox55">
@@ -1073,6 +1129,33 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="textbox218">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!AsmLineNo.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>textbox218</rd:DefaultName>
+                          <Style>
+                            <VerticalAlign>Top</VerticalAlign>
+                            <PaddingRight>5pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="textbox219">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -1097,11 +1180,8 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                             <PaddingRight>5pt</PaddingRight>
                           </Style>
                         </Textbox>
-                        <ColSpan>2</ColSpan>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell />
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="textbox13">
