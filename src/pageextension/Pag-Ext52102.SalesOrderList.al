@@ -10,5 +10,12 @@ pageextension 52102 "IMP Sales Order List" extends "Sales Order List"
                 ToolTip = 'Specifies the value of the Override Credit field.';
             }
         }
+        addafter("No.")
+        {
+            field("IMP No. Printed"; Rec."No. Printed")
+            {
+                ApplicationArea = All;
+            }
+        }
     }
 }
