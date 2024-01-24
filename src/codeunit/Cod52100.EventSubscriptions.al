@@ -63,9 +63,30 @@ codeunit 52100 "IMP Event& Subscriptions"
         SalesHeader."IMP Last Release Date" := Today;
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Release Sales Document", 'OnAfterReleaseSalesDoc', '', false, false)]
+    local procedure OnAfterReleaseSalesDoc(var SalesHeader: Record "Sales Header"; PreviewMode: Boolean; var LinesWereModified: Boolean; SkipWhseRequestOperations: Boolean)
+    begin
+        // Update Sales Statistic Entries
+        SalesStatMgt.UpdateStatSalesDoc(SalesHeader, FALSE);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnAfterPostSalesLines', '', false, false)]
+    local procedure OnAfterPostSalesLines(var SalesHeader: Record "Sales Header"; var SalesShipmentHeader: Record "Sales Shipment Header"; var SalesInvoiceHeader: Record "Sales Invoice Header"; var SalesCrMemoHeader: Record "Sales Cr.Memo Header"; var ReturnReceiptHeader: Record "Return Receipt Header"; WhseShip: Boolean; WhseReceive: Boolean; var SalesLinesProcessed: Boolean; CommitIsSuppressed: Boolean; EverythingInvoiced: Boolean; var TempSalesLineGlobal: Record "Sales Line" temporary)
+    begin
+        WITH SalesHeader DO BEGIN
+            CASE TRUE OF
+                "Document Type" IN ["Document Type"::Order, "Document Type"::Invoice]:
+                    SalesStatMgt.UpdateStatPostedInv(SalesInvoiceHeader);
+                "Document Type" = "Document Type"::"Credit Memo":
+                    SalesStatMgt.UpdateStatPostedCrMemo(SalesCrMemoHeader);
+            END;
+            SalesStatMgt.UpdateStatSalesDoc(SalesHeader, EverythingInvoiced);
+        END;
+    end;
+
     var
         SingleInstanceCUGbl: Codeunit "IMP Single Instance";
-
+        SalesStatMgt: Codeunit "Sales Statistics Management";
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnBeforeConfirmBillToContactNoChange', '', false, false)]
     local procedure Table36_OnBeforeConfirmBillToContactNoChange(var SalesHeader: Record "Sales Header"; var xSalesHeader: Record "Sales Header"; CurrentFieldNo: Integer; var Confirmed: Boolean; var IsHandled: Boolean);
@@ -77,6 +98,30 @@ codeunit 52100 "IMP Event& Subscriptions"
                 Confirmed := false;
                 IsHandled := true;
             end;
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, codeunit::"Gen. Jnl.-Post Line", 'OnBeforeCustLedgEntryInsert', '', false, false)]
+    local procedure OnBeforeCustLedgEntryInsert(var CustLedgerEntry: Record "Cust. Ledger Entry"; var GenJournalLine: Record "Gen. Journal Line"; GLRegister: Record "G/L Register"; var TempDtldCVLedgEntryBuf: Record "Detailed CV Ledg. Entry Buffer"; var NextEntryNo: Integer)
+    var
+        SalesInvoiceHeader: Record "Sales Invoice Header";
+        SalesCrMemoHeader: Record "Sales Cr.Memo Header";
+        ServiceInvoiceHeader: Record "Service Invoice Header";
+    begin
+        case GenJournalLine."Document Type" of
+            GenJournalLine."Document Type"::Invoice:
+                begin
+                    if SalesInvoiceHeader.Get(GenJournalLine."Document No.") then
+                        CustLedgerEntry."IMP Payment Terms From Doc." := SalesInvoiceHeader."Payment Terms Code"
+                    else
+                        if ServiceInvoiceHeader.Get(CustLedgerEntry."Document No.") then
+                            CustLedgerEntry."IMP Payment Terms From Doc." := ServiceInvoiceHeader."Payment Terms Code"
+                end;
+            GenJournalLine."Document Type"::"Credit Memo":
+                begin
+                    if SalesCrMemoHeader.Get(GenJournalLine."Document No.") then
+                        CustLedgerEntry."IMP Payment Terms From Doc." := SalesCrMemoHeader."Payment Terms Code";
+                end;
         end;
     end;
 }
