@@ -22,6 +22,10 @@ report 52106 "IMP Export Electornic Payments"
             column(Gen__Journal_Line_Applies_to_ID; "Applies-to ID")
             {
             }
+            column(Document_Date; "Gen. Journal Line"."Document Date")
+            { }
+            column(PaymentDocDate; PaymentDocDateLbl)
+            { }
             dataitem(CopyLoop; "Integer")
             {
                 DataItemTableView = sorting(Number);
@@ -486,6 +490,7 @@ report 52106 "IMP Export Electornic Payments"
                         {
                             Caption = 'ChosenOutput';
                             Visible = false;
+                            ApplicationArea = Basic, Suite;
                         }
                     }
                     group(EmailOptions)
@@ -496,6 +501,7 @@ report 52106 "IMP Export Electornic Payments"
                         {
                             Caption = 'Print remaining statements';
                             ToolTip = 'Specifies that amounts remaining to be paid will be included.';
+                            ApplicationArea = Basic, Suite;
                         }
                     }
                 }
@@ -615,6 +621,7 @@ report 52106 "IMP Export Electornic Payments"
         ChosenOutputMethod: Integer;
         PrintIfEmailIsMissing: Boolean;
         ShowPrintIfEmailIsMissing: Boolean;
+        PaymentDocDateLbl: Label 'Payment Document Date:';
 
     local procedure MapOutputMethod()
     var
